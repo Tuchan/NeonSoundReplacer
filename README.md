@@ -4,7 +4,7 @@ Easily change any sound (music, sound effects, dialogues, and more) in Neon Whit
 Supports **MP3, WAV, OGG, AIFF** and more. (everything that unity supports)
 
 > [!WARNING]  
-> If you're a speedrunner, please read this.
+> If you're a speedrunner, please read "Speedrunning".
 
 ![Screenshot](https://github.com/Tuchan/NeonSoundReplacer/assets/43300571/977ec441-5903-4774-b356-113060a5f0be)
 
