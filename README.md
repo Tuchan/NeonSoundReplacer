@@ -19,6 +19,7 @@ When it comes to speedrunning, it's **essential** for leaderboard moderators to 
 # FAQ
 <details>
 <summary>How to change sounds?</summary>
+  
 The whole system is designed to be very easy to work with. **If you're planning to change sounds, you have to turn on the melonloader console before launching the game.** The console will display sounds that are currently played. For the sake of this tutorial, let's say we want to change the __katana slash sound effect__. How would we do that?
 
 1. Go to the `Mods/NeonSoundReplacer` folder and put a sound effect that you want to use later (switch the original one with).
