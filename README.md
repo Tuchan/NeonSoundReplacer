@@ -6,7 +6,7 @@ Supports **MP3, WAV, OGG, AIFF** and more. (everything that unity supports)
 > [!WARNING]  
 > If you're a speedrunner, please read "Speedrunning".
 
-![Screenshot](https://github.com/Tuchan/NeonSoundReplacer/assets/43300571/977ec441-5903-4774-b356-113060a5f0be)
+![screenshot](https://github.com/Tuchan/NeonSoundReplacer/assets/43300571/a21e3cac-fde1-4bcd-8163-5290384469cb)
 
 # Speedrunning
 When it comes to speedrunning, it's **essential** for leaderboard moderators to be able to hear what you're doing in a game. For example, if they can't hear the water boost sound effect, they can suspect that you got it from nowhere, thus rejecting your record. In short, if you're planning on submitting a record to the leaderboard, please make sure that **NO** gameplay sound effects (demon noises, gun sounds, water boost noise, wall-breaking noise, etc.) are being changed. You can check that by dragging the sound effects volume slider around. Game music, voices, level finish jingles, and more, are fine to have on video. Also, remember that someone will have to watch the video you're sending, so don't put weird NSFW or turbo bass-boosted sounds in there. 
@@ -28,7 +28,7 @@ The whole system is designed to be very easy to work with. **If you're planning 
 4. Go into the console and look for the proper sound effect, you might want to trigger it a few times to check if that's the correct one. (mostly trial and error if you can't find it)
 5. The sound effects triggered by the game will look like this:
 
-![originalaudio](https://github.com/Tuchan/NeonSoundReplacer/assets/43300571/0744f8e2-c3b6-4c43-ba24-515e3847df9a)
+![originalaudio](https://github.com/Tuchan/NeonSoundReplacer/assets/43300571/2efaffe4-5918-4958-8b29-c7295b3a9875)
 
 You now know that the sound effect in the game files is called `WEAPON_KATANA_FIRE` :D
 
