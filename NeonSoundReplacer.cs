@@ -71,7 +71,19 @@ namespace NeonSoundReplacerNamespace
                         audioSource.clip = audioclip;
                         audioSource.Play();
                     }
+                    else
+                    {
+                        MelonLogger.Error("AudioSource component not found.");
+                    }
                 }
+                else
+                {
+                    MelonLogger.Error("Failed to get AudioClip.");
+                }
+            }
+            else
+            {
+                MelonLogger.Error("UnityWebRequest for " + newName + " failed: " + clip.error);
             }
         }
 
