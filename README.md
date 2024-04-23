@@ -14,7 +14,7 @@ When it comes to speedrunning, it's **essential** for leaderboard moderators to 
 **And... Sound Pack creators, please mention that the pack isn't suitable for speedrunning if that's the case... please and thank you.**
 
 > [!IMPORTANT]  
-> To change RP properties you have to have MelonPreferencesManager installed.
+> To change the properties you have to have MelonPreferencesManager installed.
 
 # FAQ
 <details>
