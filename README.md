@@ -61,7 +61,7 @@ Unzip the file and paste all lines that the pack creator provided in the `Replac
 ### OldDemoSoundPack 
 Features music and level jingle found in the Neon White Demo.
 
-[<img alt="download" width="100px" src="https://mtctutorials.com/wp-content/uploads/2019/04/Download-button-png-GREEN-color-by-mtc-tutorials.png"/>](https://cdn.discordapp.com/attachments/1058192110291009596/1145006681655353404/OldDemoSoundPack.zip)
+[<img alt="download" width="100px" src="https://mtctutorials.com/wp-content/uploads/2019/04/Download-button-png-GREEN-color-by-mtc-tutorials.png"/>](https://www.dropbox.com/scl/fi/nm8x2556ly5yfekyvlp32/OldDemoSoundPack.zip?rlkey=jool2cp4xzjeu97zssi6njpqs&st=055rjxn8&dl=1)
 
 
 
