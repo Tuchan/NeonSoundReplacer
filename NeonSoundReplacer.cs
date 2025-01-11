@@ -7,8 +7,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
-using System.IO;
 using ClockStone;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -22,6 +22,7 @@ namespace NeonSoundReplacerNamespace
         public static string modVersion;
         public static bool checkedForUpdates = false;
         public static Dictionary<string, string> customSounds = new Dictionary<string, string>();
+        public static Dictionary<string, float> customVolumes = new Dictionary<string, float>();
 
         public override void OnInitializeMelon()
         {
@@ -51,12 +52,13 @@ namespace NeonSoundReplacerNamespace
             if (customSounds.ContainsKey(sndItem.Name))
             {
                 String newName = customSounds[sndItem.Name];
-                if (shouldLogSounds.Value) MelonLogger.Msg("============= Replaced Sound: " + newName);
-                if (toggleSounds.Value) MelonCoroutines.Start(ReplaceAudioClip(__result, newName));
+                float volume = customVolumes.ContainsKey(sndItem.Name) ? customVolumes[sndItem.Name] : 1.0f;
+                if (shouldLogSounds.Value) MelonLogger.Msg("============= Replaced Sound: " + newName + " with volume: " + volume);
+                if (toggleSounds.Value) MelonCoroutines.Start(ReplaceAudioClip(__result, newName, volume));
             }
         }
 
-        private static IEnumerator ReplaceAudioClip(AudioObject audioObject, String newName)
+       private static IEnumerator ReplaceAudioClip(AudioObject audioObject, String newName, float volume)
         {
             UnityWebRequest clip = UnityWebRequestMultimedia.GetAudioClip("file://" + Path.Combine(Environment.CurrentDirectory, "Mods", "NeonSoundReplacer", newName), AudioType.UNKNOWN);
             yield return clip.SendWebRequest();
@@ -68,8 +70,17 @@ namespace NeonSoundReplacerNamespace
                     AudioSource audioSource = audioObject.GetComponent<AudioSource>();
                     if (audioSource != null)
                     {
-                        audioSource.clip = audioclip;
-                        audioSource.Play();
+                        audioSource.volume = 0f;
+                        audioSource.Stop();
+
+                        if (audioSource.loop)
+                        {
+                            MelonCoroutines.Start(PlaySoundRepeatedly(audioSource, audioclip, volume));
+                        }
+                        else
+                        {
+                            audioSource.PlayOneShot(audioclip, volume);
+                        }
                     }
                     else
                     {
@@ -98,15 +109,30 @@ namespace NeonSoundReplacerNamespace
         private void RefreshCustomSounds()
         {
             customSounds.Clear();
+            customVolumes.Clear();
             string[] lines = soundsToReplace.Value.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
             foreach (string line in lines)
             {
                 if (line.Contains("="))
                 {
                     string[] splitLine = line.Split(new char[] { '=' }, 2);
-                    string key = splitLine[0].Trim().Trim('"'); //in case someone puts quotes and spaces
-                    string value = splitLine[1].Trim().Trim('"');
-                    customSounds.Add(key, value);
+                    string key = splitLine[0].Trim().Trim('"'); // in case someone puts quotes and spaces
+                    string[] valueParts = splitLine[1].Trim().Trim('"').Split(new char[] { ' ' }, 2);
+                    string value = valueParts[0].Trim();
+                    float volume = 1.0f; // default volume
+                    if (valueParts.Length > 1 && float.TryParse(valueParts[1], out float parsedVolume))
+                    {
+                        volume = parsedVolume;
+                    }
+                    if (!customSounds.ContainsKey(key))
+                    {
+                        customSounds.Add(key, value);
+                        customVolumes.Add(key, volume);
+                    }
+                    else
+                    {
+                        MelonLogger.Error($"Duplicate sound found: {key}. Skipping this entry.");
+                    }
                 }
                 else
                 {
@@ -115,6 +141,15 @@ namespace NeonSoundReplacerNamespace
                 }
             }
             MelonLogger.Msg("Refreshed custom sounds");
+        }
+        
+        private static IEnumerator PlaySoundRepeatedly(AudioSource audioSource, AudioClip audioClip, float volume)
+        {
+            while (true)
+            {
+                audioSource.PlayOneShot(audioClip, volume);
+                yield return new WaitForSeconds(audioClip.length);
+            }
         }
 
         public IEnumerator CheckForUpdates()
@@ -188,7 +223,7 @@ namespace NeonSoundReplacerNamespace
             config = MelonPreferences.CreateCategory("NeonSoundReplacer Settings");
             toggleSounds = config.CreateEntry("Toggle Sounds", true, description: "Toggles the sounds on and off.");
             shouldLogSounds = config.CreateEntry("Log Sounds", false, description: "Displays the current audio name in the console, so that you know which sound to replace.");
-            soundsToReplace = config.CreateEntry("Replace Sounds Here", "MUSIC_STORY_TITLE = newsound.wav\nMUSIC_STORY_MAP = newmenusound.mp3", description: "To understand how to format this, either see an example below or read about it more on the github page.");
+            soundsToReplace = config.CreateEntry("Replace Sounds Here", "MUSIC_STORY_TITLE = newsound.wav 2\nMUSIC_STORY_MAP = newmenusound.mp3", description: "To understand how to format this, either see an example below or read about it more on the github page.");
             RefreshCustomSounds();
         }
     }

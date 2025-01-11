@@ -5,14 +5,14 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: MelonInfo(typeof(NeonSoundReplacer), "NeonSoundReplacer", "1.0.0", "Tuchan")]
+[assembly: MelonInfo(typeof(NeonSoundReplacer), "NeonSoundReplacer", "1.0.1", "Tuchan")]
 [assembly: MelonColor(ConsoleColor.Blue)]
 [assembly: AssemblyTitle("NeonSoundReplacer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NeonSoundReplacer")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
