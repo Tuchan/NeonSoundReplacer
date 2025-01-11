@@ -41,12 +41,10 @@ You now know that the sound effect in the game files is called `WEAPON_KATANA_FI
 
 Since version `1.0.1`, you can now specify a volume for each custom sound. To do that, go into `Neon Sound Replacer Settings` and format the line like this: 
 
-`WEAPON_KATANA_FIRE = soundeffect.mp3 0.5`. 
+`WEAPON_KATANA_FIRE = soundeffect.mp3 0.5`
 
-You can put any float value in there. That means values like `0.1` if you want to make the sound quieter, or `4` to make the sound 4 times louder. Remember to save preferences!
-
-> [!NOTE]  
-> If you put a value higher than `1`, the sound effect might get distorted. So be careful with that.
+You can put any float value in there. That means values like `0.1` if you want to make the sound quieter, or `4` to make the sound 4 times louder. **Remember to save preferences!**
+If you put a value higher than 1, the sound effect might get distorted. So be careful with that.
 
 </details>
 
