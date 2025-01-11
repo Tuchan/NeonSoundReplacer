@@ -35,16 +35,33 @@ You now know that the sound effect in the game files is called `WEAPON_KATANA_FI
 6. Now go into `Neon Sound Replacer Settings` and format the line like this `WEAPON_KATANA_FIRE = soundeffect.mp3`. Remember to save preferences!
 7. Close the window and trigger that sound again. If you hear a different sound effect, congrats :D If not, look in the console for potential errors. 
 </details>
+
+<details>
+<summary>How to change sound volume?</summary>
+
+Since version `1.0.1`, you can now specify a volume for each custom sound. To do that, go into `Neon Sound Replacer Settings` and format the line like this: 
+
+`WEAPON_KATANA_FIRE = soundeffect.mp3 0.5`. 
+
+You can put any float value in there. That means values like `0.1` if you want to make the sound quieter, or `4` to make the sound 4 times louder. Remember to save preferences!
+
+> [!NOTE]  
+> If you put a value higher than `1`, the sound effect might get distorted. So be careful with that.
+
+</details>
+
 <details>
 <summary>How to create sound packs?</summary>
 
 If you finished changing the sounds, create a .txt file and paste all of the lines from `Replace Sounds Here`, and put it in a zip with all of the sound effects that you use. If you want to see a more practical example then download the [OldDemoSoundPack in the featured section.](https://github.com/Tuchan/NeonSoundReplacer#featured-soundpacks)
 </details>
+
 <details>
 <summary>How to install sound packs?</summary>
 
 Unzip the file and paste all lines that the pack creator provided in the `Replace Sounds Here` box. Grab all sound files from the zip and put them in `Mods/NeonSoundReplacer`.
 </details>
+
 <details>
   <summary>There is a delay</summary>
 
